@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "PixelFont";
+  src: url("fonts/pixel_sans_serif.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "RecoletaAlt";
+  src: url("fonts/recoleta.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fffbed;
+  color: #111;
+  font-family: "RecoletaAlt", Georgia, serif;
+}
+
+.checkout-page {
+  min-height: 100vh;
+  padding: 55px 85px 40px;
+}
+
+#pageTitle {
+  text-align: center;
+  font-family: "PixelFont", sans-serif;
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+.success-message{
+    display:none;
+    text-align:center;
+    font-size:36px;
+    font-family:'Recoleta', serif;
+    color:#2a8f84;
+    margin:60px auto 40px;
+    max-width:1000px;
+}
+
+.bottom-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:60px;
+}
+
+#viewOrdersBtn{
+    display:none;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+h2 {
+  font-family: "PixelFont", sans-serif;
+  font-size: 28px;
+  margin-bottom: 22px;
+}
+
+.info-box,
+.option-box,
+.summary-box {
+  background-color: #7b573d;
+  color: white;
+  border-radius: 14px;
+  padding: 28px 35px;
+  margin-bottom: 26px;
+}
+
+.info-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  min-height: 170px;
+}
+
+.info-box label,
+.option-box label {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.info-box input,
+.info-box textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-family: "RecoletaAlt", Georgia, serif;
+  font-size: 20px;
+}
+
+.info-box textarea {
+  resize: none;
+  height: 70px;
+}
+
+.info-box input::placeholder,
+.info-box textarea::placeholder {
+  color: white;
+  opacity: 0.9;
+}
+
+.option-box {
+  font-size: 21px;
+}
+
+.option-box input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.payment-options {
+  display: flex;
+  gap: 60px;
+}
+
+.summary-box {
+  min-height: 420px;
+  padding: 40px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.summary-box hr {
+  border: none;
+  border-top: 2px solid white;
+  margin: 22px 0;
+}
+
+.total {
+  margin-top: 35px;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 45px;
+}
+
+button {
+  background-color: #c9f0ef;
+  border: 2px solid #806f62;
+  border-radius: 14px;
+  padding: 12px 45px;
+  font-size: 18px;
+  font-family: "RecoletaAlt", Georgia, serif;
+  cursor: pointer;
+}
+
+#backHomeBtn {
+  display: none;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist | Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="wishlist.css">
+</head>
+
+<body>
+
+<div class="wishlist-page">
+
+  <main class="wishlist-content">
+
+    <button class="back-btn" onclick="goBackToProducts()">Back</button>
+
+    <div id="wishlistItems"></div>
+
+    <button class="checkout-btn" onclick="checkoutSelected()">
+      Check Out
+    </button>
+
+  </main>
+
+  <aside class="wishlist-side">
+    <img src="images/model-pics/_Contactpage_rightside.jpg" alt="Model image">
+  </aside>
+
+</div>
+
+<script>
+const wishlistItems = document.getElementById("wishlistItems");
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+wishlist.forEach(function(item, index) {
+  wishlistItems.innerHTML += `
+    <div class="wishlist-item">
+
+      <input type="checkbox" data-index="${index}">
+
+      <img src="${item.image}" alt="${item.name}">
+
+      <div class="item-info">
+        <h3>${item.name}</h3>
+        <p><strong>Size:</strong> ${item.size}</p>
+        <p><strong>Condition:</strong> ${item.condition}</p>
+        <p><strong>Price:</strong> RM${item.price}</p>
+      </div>
+
+      <button class="remove-btn" onclick="removeItem(${index})">
+        Remove
+      </button>
+
+    </div>
+  `;
+});
+
+function removeItem(index) {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  wishlist.splice(index, 1);
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+  location.reload();
+}
+
+function checkoutSelected() {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const checkedBoxes = document.querySelectorAll("input[type='checkbox']:checked");
+
+  const selectedItems = [];
+
+  checkedBoxes.forEach(function(box) {
+    const index = box.dataset.index;
+    selectedItems.push(wishlist[index]);
+  });
+
+  localStorage.setItem("checkoutItems", JSON.stringify(selectedItems));
+
+  window.location.href = "checkout.html";
+}
+
+function goBackToProducts() {
+  const lastPage = localStorage.getItem("lastProductPage");
+
+  if (lastPage) {
+    window.location.href = lastPage;
+  } else {
+    window.location.href = "index.html";
+  }
+}
+</script>
+
+</body>
+</html>

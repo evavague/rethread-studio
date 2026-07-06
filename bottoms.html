@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bottoms | Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="new-arrivals.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <nav class="main-nav">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='tops.html'">Tops</button>
+    <button onclick="window.location.href='bottoms.html'">Bottoms</button>
+    <button onclick="window.location.href='accessories.html'">Accessories</button>
+  </nav>
+
+  <div class="icons">
+
+    <div class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="text" placeholder="search">
+    </div>
+
+    <span class="icon" onclick="window.location.href='wishlist.html'">🤎</span>
+    <span class="icon" onclick="window.location.href='orders.html'">📦</span>
+
+  </div>
+
+</header>
+
+<main class="page-content">
+
+  <h1>Bottoms</h1>
+
+  <section class="product-grid">
+
+    <div class="product-card">
+      <img src="images/Bottoms/denim-skirt.png" alt="Denim Skirt">
+      <h3>Denim Skirt</h3>
+      <p>RM 18</p>
+
+      <button
+        class="add-btn"
+        data-name="Denim Skirt"
+        onclick="addToWishlist(
+          this,
+          'Denim Skirt',
+          'S',
+          'Pre-loved',
+          '18',
+          'images/Bottoms/denim-skirt.png'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/grey-ambercrombie-sweatpants.jpeg" alt="Abercrombie Grey Sweatpants">
+      <h3>Abercrombie Grey Sweatpants</h3>
+      <p>RM 25</p>
+
+      <button
+        class="add-btn"
+        data-name="Abercrombie Grey Sweatpants"
+        onclick="addToWishlist(
+          this,
+          'Abercrombie Grey Sweatpants',
+          'M',
+          'Excellent',
+          '25',
+          'images/Bottoms/grey-ambercrombie-sweatpants.jpeg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/striped-low-rise-stripe-shorts.jpg" alt="Striped Low Rise Grunge Shorts">
+      <h3>Striped Low Rise Grunge Shorts</h3>
+      <p>RM 18</p>
+
+      <button
+        class="add-btn"
+        data-name="Striped Low Rise Grunge Shorts"
+        onclick="addToWishlist(
+          this,
+          'Striped Low Rise Grunge Shorts',
+          'S',
+          'Pre-loved',
+          '18',
+          'images/Bottoms/striped-low-rise-stripe-shorts.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/skater-jorts.jpg" alt="SouthPole Skater Jorts">
+      <h3>SouthPole Skater Jorts</h3>
+      <p>RM 20</p>
+
+      <button
+        class="add-btn"
+        data-name="SouthPole Skater Jorts"
+        onclick="addToWishlist(
+          this,
+          'SouthPole Skater Jorts',
+          'M',
+          'Excellent',
+          '20',
+          'images/Bottoms/skater-jorts.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/green-plaid-skirt.jpg" alt="Light Green Plaid Skirt">
+      <h3>Light Green Plaid Skirt</h3>
+      <p>RM 18</p>
+
+      <button
+        class="add-btn"
+        data-name="Light Green Plaid Skirt"
+        onclick="addToWishlist(
+          this,
+          'Light Green Plaid Skirt',
+          'S',
+          'Pre-loved',
+          '18',
+          'images/Bottoms/green-plaid-skirt.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/brown shorts.jpg" alt="Embroidered Brown Shorts">
+      <h3>Embroidered Brown Shorts</h3>
+      <p>RM 18</p>
+
+      <button
+        class="add-btn"
+        data-name="Embroidered Brown Shorts"
+        onclick="addToWishlist(
+          this,
+          'Embroidered Brown Shorts',
+          'S',
+          'Pre-loved',
+          '18',
+          'images/Bottoms/brown shorts.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/navy-ambercrombie-sweatpants.jpg" alt="Abercrombie Navy Sweatpants">
+      <h3>Abercrombie Navy Sweatpants</h3>
+      <p>RM 22</p>
+
+      <button
+        class="add-btn"
+        data-name="Abercrombie Navy Sweatpants"
+        onclick="addToWishlist(
+          this,
+          'Abercrombie Navy Sweatpants',
+          'M',
+          'Excellent',
+          '22',
+          'images/Bottoms/navy-ambercrombie-sweatpants.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Bottoms/dark-wash-bootcut-jeans.jpg" alt="Dark Wash Low Rise Bootcut Jeans">
+      <h3>Dark Wash Low Rise Bootcut Jeans</h3>
+      <p>RM 32</p>
+
+      <button
+        class="add-btn"
+        data-name="Dark Wash Low Rise Bootcut Jeans"
+        onclick="addToWishlist(
+          this,
+          'Dark Wash Low Rise Bootcut Jeans',
+          'M',
+          'Excellent',
+          '32',
+          'images/Bottoms/dark-wash-bootcut-jeans.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const products = document.querySelectorAll(".product-card");
+
+searchInput.addEventListener("input", () => {
+  const searchValue = searchInput.value.toLowerCase();
+
+  products.forEach(product => {
+    const productName = product.querySelector("h3").textContent.toLowerCase();
+
+    if (productName.includes(searchValue)) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
+});
+</script>
+
+<script>
+function addToWishlist(button, name, size, condition, price, image) {
+  localStorage.setItem("lastProductPage", window.location.pathname);
+
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const exists = wishlist.some(item => item.name === name);
+
+  if (exists) {
+    button.innerHTML = "✓ Added To Bag";
+    button.disabled = true;
+    button.classList.add("added");
+    return;
+  }
+
+  wishlist.push({
+    name: name,
+    size: size,
+    condition: condition,
+    price: price,
+    image: image
+  });
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+  button.innerHTML = "✓ Added To Bag";
+  button.disabled = true;
+  button.classList.add("added");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  document.querySelectorAll(".add-btn").forEach(button => {
+    const productName = button.dataset.name;
+
+    const exists = wishlist.some(item => item.name === productName);
+
+    if (exists) {
+      button.innerHTML = "✓ Added To Bag";
+      button.disabled = true;
+      button.classList.add("added");
+    }
+  });
+});
+</script>
+
+</body>
+</html>

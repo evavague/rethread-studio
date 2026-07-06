@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>New Arrivals | Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="new-arrivals.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <nav class="main-nav">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='tops.html'">Tops</button>
+    <button onclick="window.location.href='bottoms.html'">Bottoms</button>
+    <button onclick="window.location.href='accessories.html'">Accessories</button>
+  </nav>
+
+  <div class="icons">
+    <div class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="text" placeholder="search">
+    </div>
+
+    <span class="icon" onclick="window.location.href='wishlist.html'">🤎</span>
+    <span class="icon" onclick="window.location.href='orders.html'">📦</span>
+  </div>
+
+</header>
+
+<main class="page-content">
+
+  <h1>New Arrivals</h1>
+
+  <section class="product-grid">
+
+    <div class="product-card">
+      <img src="images/new-arrivals/denim-jacket.jpg" alt="Denim Jacket">
+      <h3>Denim Jacket</h3>
+      <p>RM 20</p>
+      <button class="add-btn" data-name="Denim Jacket" onclick="addToWishlist(this, 'Denim Jacket', 'M', 'Excellent', '20', 'images/new-arrivals/denim-jacket.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/denim-skirt.png" alt="Denim Skirt">
+      <h3>Denim Skirt</h3>
+      <p>RM 18</p>
+      <button class="add-btn" data-name="Denim Skirt" onclick="addToWishlist(this, 'Denim Skirt', 'S', 'Pre-loved', '18', 'images/new-arrivals/denim-skirt.png')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/brown-pink-gap-zip-up.jpg" alt="Brown & Pink Gap Hoodie">
+      <h3>Brown & Pink Gap Hoodie</h3>
+      <p>RM 20</p>
+      <button class="add-btn" data-name="Brown & Pink Gap Hoodie" onclick="addToWishlist(this, 'Brown & Pink Gap Hoodie', 'M', 'Excellent', '20', 'images/new-arrivals/brown-pink-gap-zip-up.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/leopard tank.jpg" alt="Leopard Tank">
+      <h3>Leopard Tank</h3>
+      <p>RM 15</p>
+      <button class="add-btn" data-name="Leopard Tank" onclick="addToWishlist(this, 'Leopard Tank', 'S', 'Excellent', '15', 'images/new-arrivals/leopard tank.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/pink ribbon shorts.jpg" alt="Pink Ribbon Brown Shorts">
+      <h3>Pink Ribbon Brown Shorts</h3>
+      <p>RM 18</p>
+      <button class="add-btn" data-name="Pink Ribbon Brown Shorts" onclick="addToWishlist(this, 'Pink Ribbon Brown Shorts', 'S', 'Pre-loved', '18', 'images/new-arrivals/pink ribbon shorts.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/dark purple hard rock tshirt.jpg" alt="Dark Purple Hard Rock T-shirt">
+      <h3>Dark Purple Hard Rock T-shirt</h3>
+      <p>RM 18</p>
+      <button class="add-btn" data-name="Dark Purple Hard Rock T-shirt" onclick="addToWishlist(this, 'Dark Purple Hard Rock T-shirt', 'S', 'Pre-loved', '18', 'images/new-arrivals/dark purple hard rock tshirt.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/light wash jeans.jpg" alt="Light Wash Flared Jeans">
+      <h3>Light Wash Flared Jeans</h3>
+      <p>RM 24</p>
+      <button class="add-btn" data-name="Light Wash Flared Jeans" onclick="addToWishlist(this, 'Light Wash Flared Jeans', 'M', 'Excellent', '24', 'images/new-arrivals/light wash jeans.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/new-arrivals/striped shorts.jpg" alt="Striped Grey Shorts">
+      <h3>Striped Grey Shorts</h3>
+      <p>RM 18</p>
+      <button class="add-btn" data-name="Striped Grey Shorts" onclick="addToWishlist(this, 'Striped Grey Shorts', 'S', 'Pre-loved', '18', 'images/new-arrivals/striped shorts.jpg')">
+        Add To Bag
+      </button>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const products = document.querySelectorAll(".product-card");
+
+searchInput.addEventListener("input", () => {
+  const searchValue = searchInput.value.toLowerCase();
+
+  products.forEach(product => {
+    const productName = product.querySelector("h3").textContent.toLowerCase();
+
+    if (productName.includes(searchValue)) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
+});
+
+function addToWishlist(button, name, size, condition, price, image) {
+  localStorage.setItem("lastProductPage", window.location.pathname);
+
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const exists = wishlist.some(item => item.name === name);
+
+  if (exists) {
+    button.innerHTML = "✓ Added To Bag";
+    button.disabled = true;
+    button.classList.add("added");
+    return;
+  }
+
+  wishlist.push({
+    name: name,
+    size: size,
+    condition: condition,
+    price: price,
+    image: image
+  });
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+  button.innerHTML = "✓ Added To Bag";
+  button.disabled = true;
+  button.classList.add("added");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  document.querySelectorAll(".add-btn").forEach(button => {
+    const productName = button.dataset.name;
+
+    const exists = wishlist.some(item => item.name === productName);
+
+    if (exists) {
+      button.innerHTML = "✓ Added To Bag";
+      button.disabled = true;
+      button.classList.add("added");
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tops | Rethread Studio</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="new-arrivals.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+<nav class="main-nav">
+<button onclick="window.location.href='index.html'">Home</button>
+<button onclick="window.location.href='tops.html'">Tops</button>
+<button onclick="window.location.href='bottoms.html'">Bottoms</button>
+<button onclick="window.location.href='accessories.html'">Accessories</button>
+</nav>
+
+<div class="icons">
+
+<div class="search">
+<span>⌕</span>
+<input id="searchInput" type="text" placeholder="search">
+</div>
+
+<span class="icon" onclick="window.location.href='wishlist.html'">🤎</span>
+<span class="icon" onclick="window.location.href='orders.html'">📦</span>
+
+</div>
+
+</header>
+
+<main class="page-content">
+
+<h1>Tops</h1>
+
+<section class="product-grid">
+
+<div class="product-card">
+<img src="images/Tops/plaid-shirt.jpg" alt="Plaid Shirt">
+<h3>Plaid Shirt</h3>
+<p>RM 15</p>
+
+<button
+class="add-btn"
+data-name="Plaid Shirt"
+onclick="addToWishlist(this,'Plaid Shirt','S','Pre-loved','15','images/Tops/plaid-shirt.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/black-purple-stripe-long-sleeve.jpg" alt="Black & Purple Stripe Long Sleeve">
+<h3>Black & Purple Stripe Long Sleeve</h3>
+<p>RM 23</p>
+
+<button
+class="add-btn"
+data-name="Black & Purple Stripe Long Sleeve"
+onclick="addToWishlist(this,'Black & Purple Stripe Long Sleeve','M','Excellent','23','images/Tops/black-purple-stripe-long-sleeve.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/grey-long-sleeve-pattern.jpg" alt="Grey Long Sleeve With Patterns">
+<h3>Grey Long Sleeve With Patterns</h3>
+<p>RM 23</p>
+
+<button
+class="add-btn"
+data-name="Grey Long Sleeve With Patterns"
+onclick="addToWishlist(this,'Grey Long Sleeve With Patterns','Free Size','Pre-loved','23','images/Tops/grey-long-sleeve-pattern.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/leopard-tank.jpg" alt="Leopard Tank">
+<h3>Leopard Tank</h3>
+<p>RM 15</p>
+
+<button
+class="add-btn"
+data-name="Leopard Tank"
+onclick="addToWishlist(this,'Leopard Tank','S','Excellent','15','images/Tops/leopard-tank.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/light-green-aero-hoodie.jpg" alt="Light Green Aero Hoodie">
+<h3>Light Green Aero Hoodie</h3>
+<p>RM 25</p>
+
+<button
+class="add-btn"
+data-name="Light Green Aero Hoodie"
+onclick="addToWishlist(this,'Light Green Aero Hoodie','M','Excellent','25','images/Tops/light-green-aero-hoodie.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/navy-blue-tank.jpg" alt="Navy Blue Tank">
+<h3>Navy Blue Tank</h3>
+<p>RM 18</p>
+
+<button
+class="add-btn"
+data-name="Navy Blue Tank"
+onclick="addToWishlist(this,'Navy Blue Tank','S','Pre-loved','18','images/Tops/navy-blue-tank.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/striped-brown-polo.jpg" alt="Striped Brown Polo">
+<h3>Striped Brown Polo</h3>
+<p>RM 16</p>
+
+<button
+class="add-btn"
+data-name="Striped Brown Polo"
+onclick="addToWishlist(this,'Striped Brown Polo','S','Pre-loved','16','images/Tops/striped-brown-polo.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+<div class="product-card">
+<img src="images/Tops/striped-hollister-hoodie.jpg" alt="Striped Hollister Hoodie">
+<h3>Striped Hollister Hoodie</h3>
+<p>RM 28</p>
+
+<button
+class="add-btn"
+data-name="Striped Hollister Hoodie"
+onclick="addToWishlist(this,'Striped Hollister Hoodie','M','Excellent','28','images/Tops/striped-hollister-hoodie.jpg')">
+Add To Bag
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+const products = document.querySelectorAll(".product-card");
+
+searchInput.addEventListener("input", () => {
+
+const searchValue = searchInput.value.toLowerCase();
+
+products.forEach(product => {
+
+const productName = product.querySelector("h3").textContent.toLowerCase();
+
+if(productName.includes(searchValue)){
+product.style.display = "block";
+}
+else{
+product.style.display = "none";
+}
+
+});
+
+});
+
+function addToWishlist(button,name,size,condition,price,image){
+
+localStorage.setItem(
+"lastProductPage",
+window.location.pathname
+);
+
+const wishlist =
+JSON.parse(localStorage.getItem("wishlist")) || [];
+
+const exists =
+wishlist.some(item => item.name === name);
+
+if(exists){
+
+button.innerHTML="✓ Added To Bag";
+button.disabled=true;
+button.classList.add("added");
+return;
+
+}
+
+wishlist.push({
+
+name:name,
+size:size,
+condition:condition,
+price:price,
+image:image
+
+});
+
+localStorage.setItem(
+"wishlist",
+JSON.stringify(wishlist)
+);
+
+button.innerHTML="✓ Added To Bag";
+button.disabled=true;
+button.classList.add("added");
+
+}
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+const wishlist=
+JSON.parse(localStorage.getItem("wishlist")) || [];
+
+document.querySelectorAll(".add-btn").forEach(button=>{
+
+const productName=button.dataset.name;
+
+const exists=wishlist.some(item=>item.name===productName);
+
+if(exists){
+
+button.innerHTML="✓ Added To Bag";
+button.disabled=true;
+button.classList.add("added");
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

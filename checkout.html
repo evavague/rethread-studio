@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Checkout | Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+<main class="checkout-page">
+
+  <h1 id="pageTitle">Check Out</h1>
+
+  <p id="successMessage" class="success-message">
+    Thanks for shopping! Your order has been confirmed and will be shipped within the next 3 days.
+  </p>
+
+  <div class="checkout-layout" id="checkoutLayout">
+
+    <section class="left-side">
+
+      <h2>Customer Info</h2>
+
+      <div class="info-box">
+
+        <div>
+          <label>Email</label>
+          <input type="email" id="email" placeholder="@gmail.com">
+        </div>
+
+        <div>
+          <label>Shipping Address</label>
+          <textarea id="address" placeholder="street name&#10;area"></textarea>
+        </div>
+
+      </div>
+
+      <h2>Shipping Option</h2>
+
+      <div class="option-box">
+        <label>
+          <input type="radio" name="shipping" checked>
+          Standard Delivery
+        </label>
+      </div>
+
+      <h2>Payment Method</h2>
+
+      <div class="option-box payment-options">
+
+        <label>
+          <input type="radio" name="payment" value="Online Banking" checked>
+          Online Banking
+        </label>
+
+        <label>
+          <input type="radio" name="payment" value="E-Wallet">
+          E-Wallet
+        </label>
+
+      </div>
+
+    </section>
+
+    <section class="right-side">
+
+      <h2>Order Summary</h2>
+
+      <div class="summary-box">
+
+        <div id="orderItems"></div>
+
+        <hr>
+
+        <div class="summary-row">
+          <span>Shipping Fees</span>
+          <span>RM 2</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-row total">
+          <span>Order Total</span>
+          <span id="orderTotal">RM 0</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="bottom-buttons">
+    <button id="backCartBtn" onclick="window.location.href='wishlist.html'">
+      Back To Cart
+    </button>
+
+    <button id="placeOrderBtn" onclick="placeOrder()">
+      Place Order
+    </button>
+
+    <button
+  id="viewOrdersBtn"
+  onclick="window.location.href='orders.html'"
+  style="display:none;"
+>
+  View Orders
+</button>
+  </div>
+
+</main>
+
+<script>
+const orderItems = document.getElementById("orderItems");
+const orderTotal = document.getElementById("orderTotal");
+
+const checkoutItems =
+  JSON.parse(localStorage.getItem("checkoutItems")) || [];
+
+const shippingFee = 2;
+let subtotal = 0;
+
+if (checkoutItems.length === 0) {
+  orderItems.innerHTML = `
+    <p class="empty-checkout">
+      Your cart is empty.
+    </p>
+  `;
+
+  orderTotal.textContent = "RM 0";
+  document.getElementById("placeOrderBtn").style.display = "none";
+} else {
+  checkoutItems.forEach(function(item) {
+    const price = Number(item.price);
+    subtotal += price;
+
+    orderItems.innerHTML += `
+      <div class="summary-row">
+        <span>${item.name}</span>
+        <span>RM ${price}</span>
+      </div>
+    `;
+  });
+
+  orderTotal.textContent = "RM " + (subtotal + shippingFee);
+}
+
+function placeOrder() {
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+
+  if (checkoutItems.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  if (email === "" || address === "") {
+    alert("Please fill in your email and shipping address.");
+    return;
+  }
+
+  const selectedPayment =
+    document.querySelector("input[name='payment']:checked").value;
+
+  const orders =
+    JSON.parse(localStorage.getItem("orders")) || [];
+
+  orders.push({
+    date: new Date().toLocaleDateString(),
+    status: "Preparing Shipment",
+    email: email,
+    address: address,
+    payment: selectedPayment,
+    shippingFee: shippingFee,
+    total: subtotal + shippingFee,
+    items: checkoutItems
+  });
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.removeItem("checkoutItems");
+
+  document.getElementById("pageTitle").style.display = "none";
+document.getElementById("checkoutLayout").style.display = "none";
+
+document.getElementById("successMessage").style.display = "block";
+
+document.getElementById("backCartBtn").style.display = "none";
+document.getElementById("placeOrderBtn").style.display = "none";
+
+const buttons =
+document.querySelector(".bottom-buttons");
+
+buttons.style.justifyContent = "center";
+
+document.getElementById("viewOrdersBtn").style.display =
+"inline-block";
+}
+</script>
+
+</body>
+</html>

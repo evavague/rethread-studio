@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders</title>
+
+<link rel="stylesheet" href="orders.css">
+</head>
+
+<body>
+<h1 class="orders-title">My Orders</h1>
+
+<div id="ordersContainer"></div>
+
+<div class="back-home-container">
+  <button onclick="window.location.href='index.html'">
+    Back Home
+  </button>
+</div>
+
+</div>
+
+<script>
+
+const orders =
+JSON.parse(localStorage.getItem("orders")) || [];
+
+const container =
+document.getElementById("ordersContainer");
+
+if (orders.length === 0) {
+
+  container.innerHTML = `
+    <p class="empty">
+      No orders placed yet.
+    </p>
+  `;
+
+}
+
+else {
+
+  orders.reverse().forEach(order => {
+
+    container.innerHTML += `
+
+      <div class="order-card">
+
+        <div class="order-header">
+
+          <h2>
+            Order Date:
+            ${order.date}
+          </h2>
+
+          <span class="status">
+            ${order.status}
+          </span>
+
+        </div>
+
+        ${order.items.map(item => `
+
+          <div class="product">
+
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+            >
+
+            <div>
+
+              <h3>${item.name}</h3>
+
+              <p>
+                RM${item.price}
+              </p>
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+if (orders.length === 0) {
+  document.getElementById("ordersContainer").innerHTML = `
+    <div class="empty-orders">
+      <h2>No orders yet</h2>
+      <p>Your order history will appear here after you place an order.</p>
+    </div>
+  `;
+}
+
+</script>
+
+</body>
+</html>

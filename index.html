@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="logo" onclick="window.location.href='index.html'">
+   
+  </div>
+
+  <nav class="main-nav">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='tops.html'">Tops</button>
+    <button onclick="window.location.href='bottoms.html'">Bottoms</button>
+    <button onclick="window.location.href='accessories.html'">Accessories</button>
+  </nav>
+
+  <div class="icons">
+    <div class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="text" placeholder="search">
+    </div>
+
+    <span class="icon" onclick="window.location.href='wishlist.html'">🤎</span>
+    <span class="icon" onclick="window.location.href='orders.html'">
+  📦
+</span>
+  </div>
+
+</header>
+
+<section class="hero">
+
+  <div class="hero-left">
+    <h1>Rewear.<br>Restyle.<br>Rethread.</h1>
+
+    <p>
+      Carefully curated Y2K pieces organised to make
+      thrifting easier and more inspiring.
+    </p>
+
+    <div class="buttons">
+      <button onclick="window.location.href='ourstory.html'">Our Story</button>
+      <button onclick="window.location.href='contact.html'">Contact</button>
+      <button onclick="window.location.href='support.html'">Support</button>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/model-pics/home-page.png" alt="Models">
+  </div>
+
+  <div class="hero-right">
+    <h2>Welcome 2<br>Rethread<br>Studio!</h2>
+
+    <h3>
+      Curated Vintage &<br>
+      Thrift Finds, Just 4<br>
+      You!
+    </h3>
+  </div>
+
+</section>
+
+<section class="new-arrivals">
+
+  <div class="section-title">
+    <h2>New Arrivals!</h2>
+
+    <button class="see-more" onclick="window.location.href='new-arrivals.html'">
+      see more →
+    </button>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <img src="images/new-arrivals/denim-jacket.jpg" alt="Denim Jacket">
+      <h4>Denim Jacket</h4>
+      <p>RM 20</p>
+    </div>
+
+    <div class="product">
+      <img src="images/new-arrivals/denim-skirt.png" alt="Denim Skirt">
+      <h4>Denim Skirt</h4>
+      <p>RM 18</p>
+    </div>
+
+    <div class="product">
+      <img src="images/new-arrivals/brown-pink-gap-zip-up.jpg" alt="Gap Hoodie">
+      <h4>Brown With Pink Hood Gap Hoodie</h4>
+      <p>RM 20</p>
+    </div>
+
+    <div class="product">
+      <img src="images/new-arrivals/pink-blouse-denim-skirt-set.png" alt="Pink Set">
+      <h4>Pink Blouse & Denim Skirt Set</h4>
+      <p>RM 25</p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const products = document.querySelectorAll(".product");
+
+  searchInput.addEventListener("input", function () {
+    const searchValue = searchInput.value.toLowerCase();
+
+    products.forEach(function (product) {
+      const productName = product.querySelector("h4").textContent.toLowerCase();
+
+      if (productName.includes(searchValue)) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  });
+
+function openCart() {
+
+  const checkoutItems =
+    JSON.parse(localStorage.getItem("checkoutItems")) || [];
+
+  if (checkoutItems.length > 0) {
+
+    window.location.href = "checkout.html";
+
+  } else {
+
+    alert("Your cart is empty.");
+
+  }
+
+}
+</script>
+
+</body>
+</html>

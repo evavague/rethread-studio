@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Accessories | Rethread Studio</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="new-arrivals.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <nav class="main-nav">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='tops.html'">Tops</button>
+    <button onclick="window.location.href='bottoms.html'">Bottoms</button>
+    <button onclick="window.location.href='accessories.html'">Accessories</button>
+  </nav>
+
+  <div class="icons">
+
+    <div class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="text" placeholder="search">
+    </div>
+
+    <span class="icon" onclick="window.location.href='wishlist.html'">🤎</span>
+    <span class="icon" onclick="window.location.href='orders.html'">📦</span>
+
+  </div>
+
+</header>
+
+<main class="page-content">
+
+  <h1>Accessories</h1>
+
+  <section class="product-grid">
+
+    <div class="product-card">
+      <img src="images/Accessories/blue-polka-dot.jpg" alt="Navy White Polka Dot Shoulder Bag">
+      <h3>Navy White Polka Dot Shoulder Bag</h3>
+      <p>RM 15</p>
+
+      <button
+        class="add-btn"
+        data-name="Navy White Polka Dot Shoulder Bag"
+        onclick="addToWishlist(
+          this,
+          'Navy White Polka Dot Shoulder Bag',
+          'One Size',
+          'Excellent',
+          '15',
+          'images/Accessories/blue-polka-dot.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/hair-clip.jpg" alt="Silver Hair Clip With Charm Set">
+      <h3>Silver Hair Clip With Charm Set</h3>
+      <p>RM 6</p>
+
+      <button
+        class="add-btn"
+        data-name="Silver Hair Clip With Charm Set"
+        onclick="addToWishlist(
+          this,
+          'Silver Hair Clip With Charm Set',
+          'One Size',
+          'Excellent',
+          '6',
+          'images/Accessories/hair-clip.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/yellow-polka-dot.jpg" alt="Yellow Polka Dot Shoulder Bag">
+      <h3>Yellow Polka Dot Shoulder Bag</h3>
+      <p>RM 15</p>
+
+      <button
+        class="add-btn"
+        data-name="Yellow Polka Dot Shoulder Bag"
+        onclick="addToWishlist(
+          this,
+          'Yellow Polka Dot Shoulder Bag',
+          'One Size',
+          'Excellent',
+          '15',
+          'images/Accessories/yellow-polka-dot.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/polkadot-glasses.jpg" alt="White Polka Dot Black Glasses">
+      <h3>White Polka Dot Black Glasses</h3>
+      <p>RM 8</p>
+
+      <button
+        class="add-btn"
+        data-name="White Polka Dot Black Glasses"
+        onclick="addToWishlist(
+          this,
+          'White Polka Dot Black Glasses',
+          'One Size',
+          'Excellent',
+          '8',
+          'images/Accessories/polkadot-glasses.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/belt.jpg" alt="Grey Belt">
+      <h3>Grey Belt</h3>
+      <p>RM 10</p>
+
+      <button
+        class="add-btn"
+        data-name="Grey Belt"
+        onclick="addToWishlist(
+          this,
+          'Grey Belt',
+          'One Size',
+          'Pre-loved',
+          '10',
+          'images/Accessories/belt.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/star-beanie.jpg" alt="Brown Star Beanie">
+      <h3>Brown Star Beanie</h3>
+      <p>RM 11</p>
+
+      <button
+        class="add-btn"
+        data-name="Brown Star Beanie"
+        onclick="addToWishlist(
+          this,
+          'Brown Star Beanie',
+          'One Size',
+          'Excellent',
+          '11',
+          'images/Accessories/star-beanie.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/star-beaded-necklace.jpg" alt="Star Beaded Necklace">
+      <h3>Star Beaded Necklace</h3>
+      <p>RM 8</p>
+
+      <button
+        class="add-btn"
+        data-name="Star Beaded Necklace"
+        onclick="addToWishlist(
+          this,
+          'Star Beaded Necklace',
+          'One Size',
+          'Excellent',
+          '8',
+          'images/Accessories/star-beaded-necklace.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Accessories/grey-scarf.jpg" alt="Star Embroidered Grey Scarf">
+      <h3>Star Embroidered Grey Scarf</h3>
+      <p>RM 11</p>
+
+      <button
+        class="add-btn"
+        data-name="Star Embroidered Grey Scarf"
+        onclick="addToWishlist(
+          this,
+          'Star Embroidered Grey Scarf',
+          'One Size',
+          'Pre-loved',
+          '11',
+          'images/Accessories/grey-scarf.jpg'
+        )">
+        Add To Bag
+      </button>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const products = document.querySelectorAll(".product-card");
+
+searchInput.addEventListener("input", () => {
+  const searchValue = searchInput.value.toLowerCase();
+
+  products.forEach(product => {
+    const productName = product.querySelector("h3").textContent.toLowerCase();
+
+    if (productName.includes(searchValue)) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
+});
+</script>
+
+<script>
+function addToWishlist(button, name, size, condition, price, image) {
+  localStorage.setItem("lastProductPage", window.location.pathname);
+
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const exists = wishlist.some(item => item.name === name);
+
+  if (exists) {
+    button.innerHTML = "✓ Added To Bag";
+    button.disabled = true;
+    button.classList.add("added");
+    return;
+  }
+
+  wishlist.push({
+    name: name,
+    size: size,
+    condition: condition,
+    price: price,
+    image: image
+  });
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+  button.innerHTML = "✓ Added To Bag";
+  button.disabled = true;
+  button.classList.add("added");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  document.querySelectorAll(".add-btn").forEach(button => {
+    const productName = button.dataset.name;
+
+    const exists = wishlist.some(item => item.name === productName);
+
+    if (exists) {
+      button.innerHTML = "✓ Added To Bag";
+      button.disabled = true;
+      button.classList.add("added");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
